@@ -1,3 +1,30 @@
 body {
-  background: radial-gradient(circle, rgba(63,94,251,1) 0%, rgba(252,70,107,1) 100%);
+  background-color:#faf1ed
+}
+
+body, nav, button {
+  font-family:'Source Sans Pro', sans-serif;
+}
+
+button, .user-greeting {
+  font-size: 18px;
+}
+
+button {
+  cursor: pointer;
+}
+
+h1 {
+  font-family: 'Playfair Display SC', serif;
+  font-size: 40px
+}
+
+.company-logo {
+  height: 80px;
+  width: 80px;
+}
+
+.profile-icon {
+  height: 40px;
+  width: 40px;
 }
