@@ -9,6 +9,7 @@ import './images/turing-logo.png'
 import './images/clementine-logo.png'
 import './images/user-interface.png'
 import './images/booking.png'
+import './images/login-clementine-logo.png'
 
 
 console.log('This is the JavaScript entry file - your code begins here.');

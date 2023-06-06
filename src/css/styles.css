@@ -4,11 +4,17 @@ body, html {
   margin: 5;
 }
 
-body, nav, button {
+body, 
+nav, 
+button,
+.username-input,
+.password-input,
+.username,
+.password {
   font-family:'Source Sans Pro', sans-serif;
 }
 
-header, .profile-section, .registration-section {
+header, .profile-section, .registration-section, .login-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,12 +25,24 @@ nav {
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: -17px
+  margin-top: -15px
 }
-/* 
-.registration-section {
-  justify-content: space-between;
-} */
+
+.login-page {
+  background-color:white;
+  border-color:rgb(252, 151, 27);
+  border-style: solid;
+  border-width: 2px;
+  width: 50vh;
+}
+
+main {
+  height: 55vh;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  justify-content: center;
+}
 
 button, .user-greeting {
   font-size: 18px;
@@ -33,7 +51,29 @@ button, .user-greeting {
 
 button {
   cursor: pointer;
-  width: 175px
+  width: 175px;  
+}
+
+.username-input,
+.username,
+.password-input,
+.password {
+  margin: 10px;
+}
+
+.username-input,
+.password-input {
+  height: 30px;
+  width: 300px;
+}
+
+form {
+  width: 100%;
+  padding: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 h1 {
@@ -47,7 +87,7 @@ h1 {
   width: 80px;
 }
 
-.profile-icon, .registration-icon {
+.profile-icon, .registration-icon, .login-logo {
   height: 40px;
   width: 40px;
   padding-bottom: 5px;

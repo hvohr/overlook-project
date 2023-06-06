@@ -25,8 +25,17 @@
   </nav>
 </header>
 <body>
+  <main class="main-section">
+    <form class="login-page">
+        <img class="login-logo" src="./images/login-clementine-logo.png">
+        <label class="username">Username</label>
+        <input class ="username-input" type="text" placeholder="Enter Username" name="uname" required>
+        <label class="password">Password</label>
+        <input class="password-input" type="password" placeholder="Enter Password" name="psw" required>
+        <button class ="form-submit">Login</button>
+    </form>
+  </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
