@@ -1,22 +1,45 @@
-body {
-  background-color:#faf1ed
+body, html {
+  background-color:#faf1ed;
+  min-height: 100vh;
+  margin: 5;
 }
 
 body, nav, button {
   font-family:'Source Sans Pro', sans-serif;
 }
 
+header, .profile-section, .registration-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: flex-end;
+  margin-top: -17px
+}
+/* 
+.registration-section {
+  justify-content: space-between;
+} */
+
 button, .user-greeting {
   font-size: 18px;
+  margin: 5px
 }
 
 button {
   cursor: pointer;
+  width: 175px
 }
 
 h1 {
   font-family: 'Playfair Display SC', serif;
-  font-size: 40px
+  font-size: 40px;
+  margin: 0px
 }
 
 .company-logo {
@@ -24,7 +47,8 @@ h1 {
   width: 80px;
 }
 
-.profile-icon {
+.profile-icon, .registration-icon {
   height: 40px;
   width: 40px;
+  padding-bottom: 5px;
 }
