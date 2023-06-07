@@ -4,13 +4,62 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Webpack Starter Kit</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Source+Sans+Pro:wght@200;300;400&display=swap" rel="stylesheet">
+  <title>The Clementine Hotel</title>
 </head>
+<header class = 'page-header'>
+  <img class='company-logo' src='./images/clementine-logo.png'>
+  <h1 class = 'website-title' tabindex='0'>The Clementine Hotel</h1>
+  <nav class = 'navbar'>
+    <div class = 'registration-section'>
+      <img class='registration-icon' src='./images/booking.png'>
+      <button class='registration-button' tabindex='0'>Make a Reservation</button>
+    </div>
+    <div class = "user-welcome">
+      <img class="welcome-logo" src="./images/hotel-bell.png">
+      <h2 class="welcome-name">Hello Hollis!</h2>
+      <p class="welcome">Welcome to your Dashboard!</p>
+    </div>
+    <div class = 'profile-section'>
+      <img class='profile-icon' src='./images/user-interface.png'>
+      <button class = 'log-out-button' tabindex='0'>Logout</button>
+    </div>
+  </nav>
+</header>
 <body>
-  <img src="./images/turing-logo.png" alt="turing logo">
-  
+  <main class="main-section">
+    <section class="login-container" hidden>
+      <form class="login-page">
+          <img class="login-logo" src="./images/login-clementine-logo.png">
+          <label class="username">Username</label>
+          <input class ="username-input" type="text" tabindex="0" placeholder="Enter Username" name="uname" required>
+          <label class="password">Password</label>
+          <input class="password-input" type="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+          <button class ="form-submit" tabindex="0">Login</button>
+      </form>
+    </section>
+    <section class="dashboard-information-container" hidden>
+      <div class="scheduled-bookings-container">
+        <h2 class="scheduled-bookings-title">Current Bookings</h2>
+      </div>
+      <div class="user-cost-container">
+        <h2 class="total-cost-message">Total Cost of Bookings</h2>
+        <p class="total-cost-value">$___</p>
+      </div>
+  </section>
+  <section class="make-reservation-container" hidden>
+    <h2 class="make-res-title">Make a Reservation</h2>
+    <div class="choose-date">
+      <p>Please Choose a Date</p>
+    </div>
+    <div class="type-filter">
+      <p>Filter by Type</p>
+    </div>
+  </section>
+  </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
-
 </body>
 </html>
