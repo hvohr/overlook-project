@@ -6,3 +6,7 @@ const roomsData = [
 {"number":5,"roomType":"single room","bidet":true,"bedSize":"queen","numBeds":2,"costPerNight":340.17},
 {"number":6,"roomType":"junior suite","bidet":true,"bedSize":"queen","numBeds":1,"costPerNight":397.02}
 ];
+
+export {
+  roomsData
+}
