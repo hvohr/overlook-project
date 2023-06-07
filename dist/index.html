@@ -18,22 +18,28 @@
       <button class='registration-button' tabindex='0'>Make a Reservation</button>
     </div>
     <div class = 'profile-section'>
-      <p class='user-greeting'>Welcome Hollis!</p>
       <img class='profile-icon' src='./images/user-interface.png'>
-      <button class = 'log-out-button' tabindex='0'>Log Out</button>
+      <button class = 'log-out-button' tabindex='0'>Logout</button>
     </div>
   </nav>
 </header>
 <body>
   <main class="main-section">
-    <form class="login-page">
-        <img class="login-logo" src="./images/login-clementine-logo.png">
-        <label class="username">Username</label>
-        <input class ="username-input" type="text" placeholder="Enter Username" name="uname" required>
-        <label class="password">Password</label>
-        <input class="password-input" type="password" placeholder="Enter Password" name="psw" required>
-        <button class ="form-submit">Login</button>
-    </form>
+    <section class="login-container" hidden>
+      <form class="login-page">
+          <img class="login-logo" src="./images/login-clementine-logo.png">
+          <label class="username">Username</label>
+          <input class ="username-input" type="text" tabindex="0" placeholder="Enter Username" name="uname" required>
+          <label class="password">Password</label>
+          <input class="password-input" type="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+          <button class ="form-submit" tabindex="0">Login</button>
+      </form>
+    </section>
+    <section class = "user-dashboard">
+      <img class="dashboard-logo" src="./images/hotel-bell.png">
+      <h2 class="dashboard-name">Hello Hollis!</h2>
+      <p class="dashboard-welcome">Welcome to your Dashboard!</p>
+    </section>
   </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
   <script src="bundle.js"></script>
