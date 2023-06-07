@@ -14,7 +14,7 @@ header,
 .profile-section, 
 .registration-section, 
 .login-page, 
-.user-dashboard {
+.user-welcome {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,6 +30,7 @@ nav {
   border-color:#242c2c;
   border-style: solid none;
   border-width: 3px;
+  background-color:rgb(255, 255, 255)
 }
 
 .login-page {
@@ -47,12 +48,16 @@ main {
   justify-content:center;
 }
 
-.dashboard-welcome, .dashboard-name {
-  font-size: 20px;
+.welcome-name, .welcome {
+  font-size: 16px;
   margin: 5px;
 }
 
-.user-dashboard {
+.total-cost-message, .scheduled-bookings-title {
+  font-size: 20px;
+}
+
+.user-welcome {
   margin: 5px;
   width: 300px;
   align-content: center;
@@ -98,7 +103,7 @@ h1 {
   width: 80px;
 }
 
-.profile-icon, .registration-icon, .login-logo, .dashboard-logo {
+.profile-icon, .registration-icon, .login-logo, .welcome-logo {
   height: 40px;
   width: 40px;
   padding-bottom: 5px;
