@@ -4,14 +4,15 @@ import { bookingsData } from '/Users/hollisvohr/turing_work/mod_2/outlook-projec
 import { roomsData } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/data/rooms-sample-data.js';
 import { findAvailability, displayAvailableRooms } from '../src/bookingUtils.js'
 
-describe('filterByRoomType', function() {
+describe('findAvailability', function() {
   it('should be a function', function() {
     expect(findAvailability).to.be.a('function')
   })
   it('should filter rooms that are available on that date', () => {
     let findDate = findAvailability(bookingsData, "2022-04-22")
     let expected = [{"id":"5fwrgu4i7k55hl6x4","userID":9,"date":"2022/01/27","roomNumber":6},
-    {"id":"5fwrgu4i7k55hl6wk","userID":17,"date":"2022/01/24","roomNumber":2},  
+    {"id":"5fwrgu4i7k55hl6wk","userID":17,"date":"2022/01/24","roomNumber":2},
+    {"id":"5fwrgu4i7k55hl8ea","userID":1,"date":"2021/09/23","roomNumber":6},  
     {"id":"5fwrgu4i7k55hl6t7","userID":20,"date":"2022/02/16","roomNumber":7},
     {"id":"5fwrgu4i7k55hl6vh","userID":13,"date":"2022/02/19","roomNumber":1},
     {"id":"5fwrgu4i7k55hl6um","userID":41,"date":"2022/02/07","roomNumber":4},
