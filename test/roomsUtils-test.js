@@ -33,10 +33,18 @@ describe('filterByRoomType', function() {
         bedSize: 'queen',
         numBeds: 2,
         costPerNight: 340.17
+      },
+      {
+        number: 7,
+        roomType: "single room",
+        bidet: false,
+        bedSize: "queen",
+        numBeds: 2,
+        costPerNight: 231.46
       }
     ]
     expect(filter).to.deep.equal(expected)
-    expect(filter.length).to.equal(3)
+    expect(filter.length).to.equal(4)
   })
   it('should return nothing if no filter matches', () => {
     let filter = filterByRoomType(roomsData, 'king suite');
