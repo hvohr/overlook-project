@@ -12,3 +12,7 @@ const customerData = [
   {"id":11,"name":"Melissa Sauer"},
   {"id":12,"name":"Kari Keeling"}
 ]
+
+export {
+  customerData
+}
