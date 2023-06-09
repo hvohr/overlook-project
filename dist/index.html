@@ -51,13 +51,23 @@
   </section>
   <section class="make-reservation-container">
     <h2 class="make-res-title">Make a Reservation</h2>
-    <div class="choose-date">
-      <p>Please Choose a Date</p>
-      <input class="booking-date" type="date" value="2023-06-01">
-    </div>
-    <div class="type-filter">
-      <p>Filter by Type</p>
-    </div>
+    <section class = "user-bookings-choices">
+      <div class="choose-date">
+        <p>Please Choose a Date</p>
+        <input class="booking-date" type="date" value="2023-06-01" id="date">
+      </div>
+      <div class="type-filter">
+        <label for="rooms">Filter by Type</label>
+        <select id="roomType" name="rooms">
+        <option value="single-room">Single Room</option>
+        <option value="junior-suite">Junior Suite</option>
+        <option value="residential-suite">Residential Suite</option>
+        <option value="suite">Suite</option>
+        </select>
+      </div>
+    </section>
+  </section>
+  <section class="rooms-display">
   </section>
   </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
