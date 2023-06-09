@@ -5,7 +5,6 @@ const findAvailability = (bookingsData, dateValue) => {
 
 const displayAvailableRooms = (findAvailabilityData, roomsData) => {
   let find = findAvailabilityData.map((book) => book.roomNumber)
-  console.log(find)
   let filter = roomsData.filter(book2 => {
     if (find.includes(book2.number)) {
       return book2

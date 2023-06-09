@@ -6,13 +6,17 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Source+Sans+Pro:wght@200;300;400&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Playfair+Display+SC&display=swap" rel="stylesheet"> 
   <title>The Clementine Hotel</title>
 </head>
 <header class = 'page-header'>
   <img class='company-logo' src='./images/clementine-logo.png'>
   <h1 class = 'website-title' tabindex='0'>The Clementine Hotel</h1>
   <nav class = 'navbar'>
+    <div class = 'return-home-section' hidden>
+      <img class='home-icon' src='./images/hotel-sign.png'>
+      <button class='home-button' tabindex='0'>Return to Dashboard</button>
+    </div>
     <div class = 'registration-section'>
       <img class='registration-icon' src='./images/booking.png'>
       <button class='registration-button' tabindex='0'>Make a Reservation</button>
@@ -51,16 +55,30 @@
   </section>
   <section class="make-reservation-container">
     <h2 class="make-res-title">Make a Reservation</h2>
-    <div class="choose-date">
-      <p>Please Choose a Date</p>
-      <input class="booking-date" type="date" value="2023-06-01">
-    </div>
-    <div class="type-filter">
-      <p>Filter by Type</p>
-    </div>
+    <section class = "user-bookings-choices">
+      <div class="date-filter">
+        <label for="booking">Please Choose a Date</label>
+        <input class="booking-date" type="date" value="2023-06-01" id="date">
+      </div>
+      <div class="reservation-search">
+        <button class = 'reservation-search'>Search Listings</button>
+      </div>
+      <div class="type-filter">
+        <label for="rooms">Filter by Type</label>
+        <select id="roomType" name="rooms">
+        <option value="single-room">Single Room</option>
+        <option value="junior-suite">Junior Suite</option>
+        <option value="residential-suite">Residential Suite</option>
+        <option value="suite">Suite</option>
+        </select>
+      </div>
+    </section>
+    <section class="rooms-display">
+    </section>
   </section>
   </main>
   <!-- Do not include the scripts.js or class files here - it is done by the webpack server -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script> 
   <script src="bundle.js"></script>
 </body>
 </html>
