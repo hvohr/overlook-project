@@ -20,6 +20,8 @@ const typeFilter = document.querySelector("#roomType")
 const makeReservationContainer = document.querySelector(".make-reservation-container")
 const roomsDisplay = document.querySelector(".rooms-display")
 const reservationSearchButton = document.querySelector(".reservation-search")
+const navRegistrationSection = document.querySelector(".registration-section")
+const navHomeSection = document.querySelector(".return-home-section")
 
 // GV
 
@@ -53,18 +55,13 @@ const startFetch = () => {
     array.forEach(arr => roomsDisplay.innerHTML += `
 <div class="date-room-display" tabindex="0" id="${arr.number}">
 <div class = "room-info">
-  <h3>Room Number:</h3>
-  <p class="room-number">${arr.number}</p>
-  <h3>Room Type:</h3>
-  <p class="room-type">${arr.roomType}</p>
-  <h3>Bidet:</h3>
-  <p class="room-bidet">${arr.bidet}</p>
-  <h3>Bed Size:</h3>
-  <p class="room-type">${arr.bedSize}</p>
-  <h3>Number of Beds:</h3>
-  <p class="room-type">${arr.numBeds}</p>
-  <h3>Cost Per Night:</h3>
-  <p class="room-type">${arr.costPerNight}</p>
+  <p class="room-number">Room Number: ${arr.number}</p>
+  <p class="room-type">Room Type: ${arr.roomType}</p>
+  <p class="room-bidet">Bidet: ${arr.bidet}</p>
+  <p class="room-bed-size">Bed Size: ${arr.bedSize}</p>
+  <p class="room-bed">Number of Beds: ${arr.numBeds}</p>
+  <p class="room-cost">Cost Per Night: ${arr.costPerNight}</p>
+  <button class="booking-button">Book Now</button>
 </div>
 </div>`)
 }
@@ -79,6 +76,8 @@ const showElements = (element) => {
 
 const reservationElements = () => {
   hideElements(welcomeUser)
+  hideElements(navRegistrationSection)
+  showElements(navHomeSection)
 }
 
 
