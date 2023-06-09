@@ -15,10 +15,15 @@ header,
 .registration-section, 
 .login-page, 
 .user-welcome,
-.date-room-display {
+.date-room-display,
+.return-home-section {
   display: flex;
   flex-direction: column;
   align-items: center;
+}
+
+[hidden]{
+  display:none;
 }
 
 nav {
@@ -104,7 +109,11 @@ h1 {
   width: 80px;
 }
 
-.profile-icon, .registration-icon, .login-logo, .welcome-logo {
+.profile-icon, 
+.registration-icon, 
+.login-logo, 
+.welcome-logo,
+.home-icon {
   height: 40px;
   width: 40px;
   padding-bottom: 5px;

@@ -14,5 +14,6 @@ import './images/user-interface.png'
 import './images/booking.png'
 import './images/login-clementine-logo.png'
 import './images/hotel-bell.png'
+import './images/hotel-sign.png'
 
 import { startFetch } from './apiCalls.js'

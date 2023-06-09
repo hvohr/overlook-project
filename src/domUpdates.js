@@ -6,9 +6,7 @@ import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings } from 
 //Query Selectors
 
 const companyLogoButton = document.querySelector('.company-logo')
-const welcomeUser = document.querySelector(".welcome-name")
-const welcomeDashBoard = document.querySelector(".welcome")
-const welcomeLogo = document.querySelector(".welcome-logo")
+const welcomeUser = document.querySelector(".user-welcome")
 const logOutButton = document.querySelector(".log-out-button")
 const makeAReservationButton = document.querySelector(".registration-button")
 const loginContainer = document.querySelector(".login-container")
@@ -18,16 +16,18 @@ const loginSubmitButton = document.querySelector(".form-submit")
 const dashboardInformationContainer = document.querySelector(".dashboard-information-container")
 const totalCostValue = document.querySelector(".total-cost-value")
 const dateIn = document.querySelector("#date")
-const typeFilter = document.querySelector(".type-filter")
+const typeFilter = document.querySelector("#roomType")
 const makeReservationContainer = document.querySelector(".make-reservation-container")
 const roomsDisplay = document.querySelector(".rooms-display")
 const reservationSearchButton = document.querySelector(".reservation-search")
-const reservationSearchContainer = document.querySelector(".reservation-search")
+
 // GV
 
 var currentUser;
 
 //Event Listeners
+
+// getSingleCustomer()
 
 const startFetch = () => {
   Promise.all([getAllCustomers(), getSingleCustomer(), getAllRooms(), getAllBookings()]).then((data) => {
@@ -36,9 +36,11 @@ const startFetch = () => {
     let bookingsData1 = data[3].bookings
 
     reservationSearchButton.addEventListener('click', function() {
-      let dateValue = date.value
-      let find = findAvailability(bookingsData1, dateValue)
-      let display = displayAvailableRooms(find, roomsData1)
+      let dateValue = dateIn.value
+      let roomTypeValue = typeFilter.value
+      let findDate = findAvailability(bookingsData1, dateValue)
+      let findRoom = filterByRoomType(roomsData1, roomTypeValue)
+      let display = displayAvailableRooms(findDate, findRoom)
       showAvailableRooms(display)
       reservationElements()
     })
@@ -77,8 +79,6 @@ const showElements = (element) => {
 
 const reservationElements = () => {
   hideElements(welcomeUser)
-  hideElements(welcomeDashBoard)
-  hideElements(welcomeLogo)
 }
 
 

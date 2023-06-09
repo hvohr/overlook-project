@@ -1,5 +1,6 @@
 const filterByRoomType = (roomsData, roomType) => {
-  let find = roomsData.filter((room) => room.roomType === roomType)
+  let removeDash = roomType.split('-').join(' ')
+  let find = roomsData.filter((room) => room.roomType === removeDash)
   return find
 }
 
