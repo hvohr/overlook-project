@@ -22,6 +22,8 @@ const roomsDisplay = document.querySelector(".rooms-display")
 const reservationSearchButton = document.querySelector(".reservation-search")
 const navRegistrationSection = document.querySelector(".registration-section")
 const navHomeSection = document.querySelector(".return-home-section")
+const bookNowButton = document.querySelectorAll(".booking-button")
+
 
 // GV
 
@@ -45,10 +47,18 @@ const startFetch = () => {
       let display = displayAvailableRooms(findDate, findRoom)
       showAvailableRooms(display)
       reservationElements()
+})
     })
 
-})
-  }
+}
+
+roomsDisplay.addEventListener('click', function(event) {
+  if (event.target.classList.contains('booking-button')) {
+    return confetti()
+  } 
+  })
+
+  
 
   const showAvailableRooms = (array) => {
     roomsDisplay.innerHTML = ''
@@ -66,6 +76,7 @@ const startFetch = () => {
 </div>`)
 }
 
+
 const hideElements = (element) => {
  element.setAttribute("hidden", "")
 }
@@ -79,6 +90,5 @@ const reservationElements = () => {
   hideElements(navRegistrationSection)
   showElements(navHomeSection)
 }
-
 
 startFetch()

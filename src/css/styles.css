@@ -157,6 +157,7 @@ label {
   flex-direction: column;
   font-size: 15px;
   margin-top: 20px;
+  margin-bottom: 20px;
   padding: 10px;
   font-family:'Source Sans Pro', sans-serif;
 }
