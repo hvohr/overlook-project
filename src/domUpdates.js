@@ -21,7 +21,8 @@ const dateIn = document.querySelector("#date")
 const typeFilter = document.querySelector(".type-filter")
 const makeReservationContainer = document.querySelector(".make-reservation-container")
 const roomsDisplay = document.querySelector(".rooms-display")
-
+const reservationSearchButton = document.querySelector(".reservation-search")
+const reservationSearchContainer = document.querySelector(".reservation-search")
 // GV
 
 var currentUser;
@@ -34,37 +35,51 @@ const startFetch = () => {
     let roomsData1 = data[2].rooms
     let bookingsData1 = data[3].bookings
 
-
-    dateIn.addEventListener('input', function() {
-      let find = findAvailability(bookingsData1, date.value)
+    reservationSearchButton.addEventListener('click', function() {
+      let dateValue = date.value
+      let find = findAvailability(bookingsData1, dateValue)
       let display = displayAvailableRooms(find, roomsData1)
       showAvailableRooms(display)
+      reservationElements()
     })
-
-
-    const showAvailableRooms = (array) => {
-      roomsDisplay.innerHTML = ''
-      array.forEach(arr => roomsDisplay.innerHTML += `
-  <div class="date-room-display" tabindex="0" id="${arr.number}">
-  </div>
-  <div class = "room-info">
-    <h3>Room Number:</h3>
-    <p class="room-number">${arr.number}</p>
-    <h3>Room Type:</h3>
-    <p class="room-type">${arr.roomType}</p>
-    <h3>Bidet:</h3>
-    <p class="room-bidet">${arr.bidet}</p>
-    <h3>Bed Size:</h3>
-    <p class="room-type">${arr.bedSize}</p>
-    <h3>Number of Beds:</h3>
-    <p class="room-type">${arr.numBeds}</p>
-    <h3>Cost Per Night:</h3>
-    <p class="room-type">${arr.costPerNight}</p>
-  </div>`)
-  }
 
 })
   }
+
+  const showAvailableRooms = (array) => {
+    roomsDisplay.innerHTML = ''
+    array.forEach(arr => roomsDisplay.innerHTML += `
+<div class="date-room-display" tabindex="0" id="${arr.number}">
+<div class = "room-info">
+  <h3>Room Number:</h3>
+  <p class="room-number">${arr.number}</p>
+  <h3>Room Type:</h3>
+  <p class="room-type">${arr.roomType}</p>
+  <h3>Bidet:</h3>
+  <p class="room-bidet">${arr.bidet}</p>
+  <h3>Bed Size:</h3>
+  <p class="room-type">${arr.bedSize}</p>
+  <h3>Number of Beds:</h3>
+  <p class="room-type">${arr.numBeds}</p>
+  <h3>Cost Per Night:</h3>
+  <p class="room-type">${arr.costPerNight}</p>
+</div>
+</div>`)
+}
+
+const hideElements = (element) => {
+ element.setAttribute("hidden", "")
+}
+
+const showElements = (element) => {
+  element.removeAttribute("hidden")
+}
+
+const reservationElements = () => {
+  hideElements(welcomeUser)
+  hideElements(welcomeDashBoard)
+  hideElements(welcomeLogo)
+}
 
 
 startFetch()
