@@ -54,7 +54,7 @@ const startFetch = () => {
     loginSubmitButton.addEventListener('click', function() {
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
-      let passwordUniversal = 'overlook2021'
+      let passwordUniversal = 'hi'
       let find = findValidIDNumber(customerData1, usernameValue)
       loginForm.innerHTML = '';
       if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
@@ -66,8 +66,10 @@ const startFetch = () => {
         <button class ="form-submit" tabindex="0">Login</button>
         <p class="username-password-error">Please Enter a Valid Username or Password</p>`
       } else {
-        homeElements()
         currentUser = find
+        homeElements()
+        let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
+        showPrevBookedRooms(prevBooked)
         welcomeName.innerText = `Hello ${currentUser.name}`
       }      
     })
@@ -83,16 +85,10 @@ roomsDisplay.addEventListener('click', function(event) {
   const showPrevBookedRooms = (array) => {
     dashboardPrevBookings.innerHTML = ''
     array.forEach(arr => dashboardPrevBookings.innerHTML += `
-  <div class="scheduled-bookings-container">
-    <h2 class="scheduled-bookings-title">Current Bookings</h2>
-    <div class = "room-info">
-      <p class="room-number">Room Number: ${arr.number}</p>
-      <p class="room-type">Room Type: ${arr.roomType}</p>
-      <p class="room-bidet">Bidet: ${arr.bidet}</p>
-      <p class="room-bed-size">Bed Size: ${arr.bedSize}</p>
-      <p class="room-bed">Number of Beds: ${arr.numBeds}</p>
-      <p class="room-cost">Cost Per Night: ${arr.costPerNight}</p>
-      <button class="booking-button">Book Now</button>
+    <div class = "prev-booking-info">
+      <img class="reserved-logo" src='./images/reserved.png'>
+      <p class="room-number">Room Number: ${arr.roomNumber}</p>
+      <p class="room-type">Booking Date: ${arr.date}</p>
     </div>
   </div>`)
 }

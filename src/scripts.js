@@ -15,4 +15,6 @@ import './images/booking.png'
 import './images/login-clementine-logo.png'
 import './images/hotel-bell.png'
 import './images/hotel-sign.png'
+import './images/reserved.png'
+
 
