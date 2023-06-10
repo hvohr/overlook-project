@@ -62,7 +62,8 @@ main {
   margin: 5px;
 }
 
-.total-cost-message, .scheduled-bookings-title {
+.total-cost-message, 
+.scheduled-bookings-title {
   font-size: 20px;
 }
 
@@ -128,6 +129,7 @@ h1 {
 }
 
 label,
+.total-cost-message,
 .total-cost {
   text-align: center;
 }
@@ -181,10 +183,14 @@ label,
   font-family:'Source Sans Pro', sans-serif;
 }
 
-.date-room-display,
 .booking-title, 
 .user-cost-container {
   width: 45%;
+  float: left;
+}
+
+.date-room-display {
+  width: 33.3%;
   float: left;
 }
 
@@ -207,7 +213,8 @@ label,
 }
 
 .total-cost {
-  width: 1
+  margin-top: 26px;
+  width: 97%
 }
 
 #date,

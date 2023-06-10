@@ -26,8 +26,6 @@ const roomsDisplay = document.querySelector(".rooms-display")
 const reservationSearchButton = document.querySelector(".reservation-search")
 const navRegistrationSection = document.querySelector(".registration-section")
 const navHomeSection = document.querySelector(".return-home-section")
-const bookNowButton = document.querySelectorAll(".booking-button")
-
 
 // GV
 
@@ -82,6 +80,11 @@ roomsDisplay.addEventListener('click', function(event) {
   } 
   })
 
+  makeAReservationButton.addEventListener('click', function() {
+    reservationElements()
+  })
+
+
   const showPrevBookedRooms = (array) => {
     dashboardPrevBookings.innerHTML = ''
     array.forEach(arr => dashboardPrevBookings.innerHTML += `
@@ -125,7 +128,6 @@ const reservationElements = () => {
   showElements(makeReservationContainer)
   hideElements(loginContainer)
   hideElements(dashboardInformationContainer)
-
 }
 
 const homeElements = () => {
