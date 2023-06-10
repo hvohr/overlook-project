@@ -35,8 +35,6 @@ var currentUser;
 
 //Event Listeners
 
-// getSingleCustomer()
-
 const startFetch = () => {
   Promise.all([getAllCustomers(), getSingleCustomer(), getAllRooms(), getAllBookings()]).then((data) => {
     let customerData1 = data[0].customers
@@ -52,7 +50,6 @@ const startFetch = () => {
       showAvailableRooms(display)
       reservationElements()
     })
-
 
     loginSubmitButton.addEventListener('click', function() {
       let usernameValue = userNameInput.value;

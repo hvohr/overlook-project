@@ -1,6 +1,6 @@
 
-const displayPrevBookedRooms = (customerID, bookingsData) => {
-  return bookingsData.filter((book) => book.userID === customerID)
+const displayPrevBookedRooms = (customerObject, bookingsData) => {
+  return bookingsData.filter((book) => book.userID === customerObject.id)
 }
 
 const findValidIDNumber = (customerData, username) => {
