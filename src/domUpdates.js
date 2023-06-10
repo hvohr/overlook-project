@@ -1,7 +1,7 @@
 import { displayPrevBookedRooms, findValidIDNumber } from '../src/customerUtils.js'
 import { findAvailability, displayAvailableRooms } from '../src/bookingUtils.js'
 import { filterByRoomType, calculateBookingCost } from '../src/roomsUtils.js'
-import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
+import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings, addPostBooking } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
 
 //Query Selectors
 
@@ -93,9 +93,8 @@ const startFetch = () => {
       event.preventDefault()
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
-      let passwordUniversal = 'overlook2021'
+      let passwordUniversal = 'hi'
       let find = findValidIDNumber(customerData1, usernameValue)
-      console.log(find)
       if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
         loginForm.innerHTML = `<img class="login-logo" src="./images/login-clementine-logo.png">
         <label class="username">Username</label>
@@ -112,16 +111,32 @@ const startFetch = () => {
         welcomeName.innerText = `Hello ${currentUser.name}`
       }      
     })
+
+    roomsDisplay.addEventListener('click', function(event) {
+      if (event.target.classList.contains('booking-button')) {
+      confetti()
+      let bookedRoomNumber = parseInt(event.target.parentElement.firstElementChild.id)
+      let bookedRoomDate = dateIn.value.split('-').join('/')
+      let bookingObject = {
+        date: bookedRoomDate,
+        number: bookedRoomNumber
+      }
+      addPostBooking(bookingObject, currentUser)
+      console.log(bookingsData1)
+      
+      }
+      })
   })
 }
 
-console.log(currentUser)
-
-roomsDisplay.addEventListener('click', function(event) {
-  if (event.target.classList.contains('booking-button')) {
-    return confetti()
-  } 
-  })
+// const postToDisplay = () => {
+//   let newList = []
+//    currentUser.recipesToCook.forEach((recipeID) => {
+//       let findID = recipesData1.find((recipe) => recipe.id === recipeID)
+//       newList.push(findID)
+//   })
+//   return newList
+// }
 
   makeAReservationButton.addEventListener('click', reservationElements)
   navHomeSection.addEventListener('click', homeElements)
@@ -133,7 +148,7 @@ roomsDisplay.addEventListener('click', function(event) {
     <div class = "prev-booking-info">
       <img class="reserved-logo" src='./images/reserved.png'>
       <p class="room-number">Room Number: ${arr.roomNumber}</p>
-      <p class="room-type">Booking Date: ${arr.date}</p>
+      <p class="room-date">Booking Date: ${arr.date}</p>
     </div>
   </div>`)
 }
@@ -143,7 +158,7 @@ roomsDisplay.addEventListener('click', function(event) {
     array.forEach(arr => roomsDisplay.innerHTML += `
 <div class="date-room-display" tabindex="0" id="${arr.number}">
 <div class = "room-info">
-  <p class="room-number">Room Number: ${arr.number}</p>
+  <p class="room-number" id="${arr.number}">Room Number: ${arr.number}</p>
   <p class="room-type">Room Type: ${arr.roomType}</p>
   <p class="room-bidet">Bidet: ${arr.bidet}</p>
   <p class="room-bed-size">Bed Size: ${arr.bedSize}</p>
@@ -153,6 +168,5 @@ roomsDisplay.addEventListener('click', function(event) {
 </div>
 </div>`)
 }
-
 
 startFetch()

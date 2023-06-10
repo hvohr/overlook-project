@@ -36,11 +36,11 @@ const addPostBooking = (postBooking, currentUser) => {
   .catch(error => alert(error))
 }
 
-const newSavedBooking = (bookingInfo, currentUser) => { 
+const newSavedBooking = (postBooking, currentUser) => { 
   return {
     userID: currentUser.id, 
-    date: bookingInfo.date,
-    roomNumber: bookingInfo.number 
+    date: postBooking.date,
+    roomNumber: postBooking.number 
   }
 }
 
