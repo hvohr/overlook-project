@@ -93,7 +93,7 @@ const startFetch = () => {
       event.preventDefault()
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
-      let passwordUniversal = 'hi'
+      let passwordUniversal = 'overlook2021'
       let find = findValidIDNumber(customerData1, usernameValue)
       console.log(find)
       if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
