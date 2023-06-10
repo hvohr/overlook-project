@@ -1,4 +1,4 @@
-import { displayPrevBookedRooms } from '../src/customerUtils.js'
+import { displayPrevBookedRooms, findValidIDNumber } from '../src/customerUtils.js'
 import { findAvailability, displayAvailableRooms } from '../src/bookingUtils.js'
 import { filterByRoomType, calculateBookingCost } from '../src/roomsUtils.js'
 import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
@@ -6,14 +6,18 @@ import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings } from 
 //Query Selectors
 
 const companyLogoButton = document.querySelector('.company-logo')
+const navigationBar = document.querySelector(".navbar")
 const welcomeUser = document.querySelector(".user-welcome")
+const welcomeName = document.querySelector(".welcome-name")
 const logOutButton = document.querySelector(".log-out-button")
+const loginForm = document.querySelector(".login-page")
 const makeAReservationButton = document.querySelector(".registration-button")
 const loginContainer = document.querySelector(".login-container")
-const userNameInput = document.querySelector(".username-input")
-const passwordInput = document.querySelector(".passwork-input")
+const userNameInput = document.querySelector("#username")
+const passwordInput = document.querySelector("#password")
 const loginSubmitButton = document.querySelector(".form-submit")
 const dashboardInformationContainer = document.querySelector(".dashboard-information-container")
+const dashboardPrevBookings = document.querySelector(".scheduled-bookings-container")
 const totalCostValue = document.querySelector(".total-cost-value")
 const dateIn = document.querySelector("#date")
 const typeFilter = document.querySelector("#roomType")
@@ -22,8 +26,6 @@ const roomsDisplay = document.querySelector(".rooms-display")
 const reservationSearchButton = document.querySelector(".reservation-search")
 const navRegistrationSection = document.querySelector(".registration-section")
 const navHomeSection = document.querySelector(".return-home-section")
-const bookNowButton = document.querySelectorAll(".booking-button")
-
 
 // GV
 
@@ -31,7 +33,45 @@ var currentUser;
 
 //Event Listeners
 
-// getSingleCustomer()
+const hideElements = (element) => {
+  element.setAttribute("hidden", "")
+ }
+ 
+ const showElements = (element) => {
+   element.removeAttribute("hidden")
+ }
+ 
+ const reservationElements = () => {
+   hideElements(welcomeUser)
+   hideElements(navRegistrationSection)
+   showElements(navHomeSection)
+   showElements(navigationBar)
+   showElements(makeReservationContainer)
+   hideElements(loginContainer)
+   hideElements(dashboardInformationContainer)
+ }
+ 
+ const homeElements = () => {
+   showElements(welcomeUser)
+   hideElements(navHomeSection)
+   showElements(navigationBar)
+   hideElements(makeReservationContainer)
+   showElements(dashboardInformationContainer)
+   hideElements(loginContainer)
+ }
+ 
+ companyLogoButton.addEventListener('click', homeElements)
+ 
+ const loginElements = () => {
+   hideElements(navigationBar)
+   showElements(loginContainer)
+   showElements(loginForm)
+   hideElements(makeReservationContainer)
+   hideElements(dashboardInformationContainer)
+   userNameInput.value = ''
+   passwordInput.value = ''
+ }
+ 
 
 const startFetch = () => {
   Promise.all([getAllCustomers(), getSingleCustomer(), getAllRooms(), getAllBookings()]).then((data) => {
@@ -47,10 +87,35 @@ const startFetch = () => {
       let display = displayAvailableRooms(findDate, findRoom)
       showAvailableRooms(display)
       reservationElements()
-})
     })
 
+    loginSubmitButton.addEventListener('click', function() {
+      event.preventDefault()
+      let usernameValue = userNameInput.value;
+      let passwordValue = passwordInput.value;
+      let passwordUniversal = 'overlook2021'
+      let find = findValidIDNumber(customerData1, usernameValue)
+      console.log(find)
+      if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
+        loginForm.innerHTML = `<img class="login-logo" src="./images/login-clementine-logo.png">
+        <label class="username">Username</label>
+        <input class ="username-input" type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
+        <label class="password">Password</label>
+        <input class="password-input" type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+        <button class ="form-submit" tabindex="0">Login</button>
+        <p class="username-password-error">Please Enter a Valid Username or Password</p>`
+      } else {
+        currentUser = find
+        homeElements()
+        let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
+        showPrevBookedRooms(prevBooked)
+        welcomeName.innerText = `Hello ${currentUser.name}`
+      }      
+    })
+  })
 }
+
+console.log(currentUser)
 
 roomsDisplay.addEventListener('click', function(event) {
   if (event.target.classList.contains('booking-button')) {
@@ -58,7 +123,20 @@ roomsDisplay.addEventListener('click', function(event) {
   } 
   })
 
-  
+  makeAReservationButton.addEventListener('click', reservationElements)
+  navHomeSection.addEventListener('click', homeElements)
+  logOutButton.addEventListener('click', loginElements)
+
+  const showPrevBookedRooms = (array) => {
+    dashboardPrevBookings.innerHTML = ''
+    array.forEach(arr => dashboardPrevBookings.innerHTML += `
+    <div class = "prev-booking-info">
+      <img class="reserved-logo" src='./images/reserved.png'>
+      <p class="room-number">Room Number: ${arr.roomNumber}</p>
+      <p class="room-type">Booking Date: ${arr.date}</p>
+    </div>
+  </div>`)
+}
 
   const showAvailableRooms = (array) => {
     roomsDisplay.innerHTML = ''
@@ -76,19 +154,5 @@ roomsDisplay.addEventListener('click', function(event) {
 </div>`)
 }
 
-
-const hideElements = (element) => {
- element.setAttribute("hidden", "")
-}
-
-const showElements = (element) => {
-  element.removeAttribute("hidden")
-}
-
-const reservationElements = () => {
-  hideElements(welcomeUser)
-  hideElements(navRegistrationSection)
-  showElements(navHomeSection)
-}
 
 startFetch()

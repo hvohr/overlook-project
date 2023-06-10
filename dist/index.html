@@ -6,13 +6,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Comfortaa&family=Playfair+Display+SC&display=swap" rel="stylesheet"> 
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display+SC&family=Source+Sans+3:wght@300;400&display=swap" rel="stylesheet"> 
   <title>The Clementine Hotel</title>
 </head>
 <header class = 'page-header'>
   <img class='company-logo' src='./images/clementine-logo.png'>
   <h1 class = 'website-title' tabindex='0'>The Clementine Hotel</h1>
-  <nav class = 'navbar'>
+  <nav class = 'navbar' hidden>
     <div class = 'return-home-section' hidden>
       <img class='home-icon' src='./images/hotel-sign.png'>
       <button class='home-button' tabindex='0'>Return to Dashboard</button>
@@ -34,26 +34,30 @@
 </header>
 <body>
   <main class="main-section">
-    <section class="login-container" hidden>
-      <form class="login-page">
+    <section class="login-container">
+      <form class="login-page" required>
           <img class="login-logo" src="./images/login-clementine-logo.png">
           <label class="username">Username</label>
-          <input class ="username-input" type="text" tabindex="0" placeholder="Enter Username" name="uname" required>
+          <input class ="username-input" type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
           <label class="password">Password</label>
-          <input class="password-input" type="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+          <input class="password-input" type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
           <button class ="form-submit" tabindex="0">Login</button>
       </form>
     </section>
     <section class="dashboard-information-container" hidden>
-      <div class="scheduled-bookings-container">
-        <h2 class="scheduled-bookings-title">Current Bookings</h2>
+      <div class="booking-title">
+          <h2 class="scheduled-bookings-title">Current Bookings</h2>
+        <div class="scheduled-bookings-container">
+        </div>
       </div>
       <div class="user-cost-container">
         <h2 class="total-cost-message">Total Cost of Bookings</h2>
+      <div class="total-cost">
         <p class="total-cost-value">$___</p>
       </div>
+    </div>
   </section>
-  <section class="make-reservation-container">
+  <section class="make-reservation-container" hidden>
     <h2 class="make-res-title">Make a Reservation</h2>
     <section class = "user-bookings-choices">
       <div class="date-filter">

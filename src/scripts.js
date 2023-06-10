@@ -3,8 +3,8 @@
 
 // An example of how you tell webpack to use a CSS (SCSS) file
 import './css/styles.css';
-import './apiCalls.js'
-import './domUpdates'
+import './apiCalls.js';
+import './domUpdates';
 
 // An example of how you tell webpack to use an image (also need to link to it in the index.html)
 
@@ -15,5 +15,6 @@ import './images/booking.png'
 import './images/login-clementine-logo.png'
 import './images/hotel-bell.png'
 import './images/hotel-sign.png'
+import './images/reserved.png'
 
-import { startFetch } from './apiCalls.js'
+

@@ -16,14 +16,11 @@ header,
 .login-page, 
 .user-welcome,
 .date-room-display,
-.return-home-section {
+.return-home-section,
+.booking-title {
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-[hidden] {
-  display:none;
 }
 
 nav {
@@ -41,10 +38,16 @@ nav {
 
 .login-page {
   background-color:white;
+  font-size: 20px;
   border-color:#fc971b;
   border-style: solid;
-  border-width: 3px;
+  border-width: 4px;
   width: 50vh;
+  margin: 50px;
+}
+
+.company-logo {
+  cursor: pointer;
 }
 
 main {
@@ -59,7 +62,8 @@ main {
   margin: 5px;
 }
 
-.total-cost-message, .scheduled-bookings-title {
+.total-cost-message, 
+.scheduled-bookings-title {
   font-size: 20px;
 }
 
@@ -113,7 +117,8 @@ h1 {
 .registration-icon, 
 .login-logo, 
 .welcome-logo,
-.home-icon {
+.home-icon,
+.reserved-logo {
   height: 40px;
   width: 40px;
   padding-bottom: 5px;
@@ -123,7 +128,9 @@ h1 {
   width: 95%;
 }
 
-label {
+label,
+.total-cost-message,
+.total-cost {
   text-align: center;
 }
 
@@ -162,13 +169,34 @@ label {
   font-family:'Source Sans Pro', sans-serif;
 }
 
+.prev-booking-info, 
+.total-cost {
+  display: flex;
+  border-style: double;
+  border-color:#fc971b;
+  background-color:#ffffff;;
+  flex-direction: column;
+  font-size: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px;
+  font-family:'Source Sans Pro', sans-serif;
+}
+
+.booking-title, 
+.user-cost-container {
+  width: 45%;
+  float: left;
+}
+
 .date-room-display {
   width: 33.3%;
   float: left;
-  /* height: 350px; */
 }
 
-.rooms-display {
+.rooms-display, 
+.scheduled-bookings-container,
+.total-cost {
   width: 100%;
   overflow: hidden;
   flex: display;
@@ -182,6 +210,11 @@ label {
 .room-cost,
 .room-bed-size {
   font-size: 15px;
+}
+
+.total-cost {
+  margin-top: 26px;
+  width: 97%
 }
 
 #date,
@@ -198,4 +231,24 @@ label {
 .reservationSearchContainer {
   display: flex;
   align-items: flex-end;
+}
+
+.dashboard-information-container {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+  margin: 10px;
+  font-family:'Source Sans Pro', sans-serif;
+}
+
+.username-password-error {
+  margin: 0px;
+  color:red;
+  font-style:italic;
+  font-size: 13px;
+}
+
+[hidden] {
+  display:none;
 }
