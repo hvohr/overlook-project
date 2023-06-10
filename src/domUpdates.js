@@ -1,4 +1,4 @@
-import { displayPrevBookedRooms } from '../src/customerUtils.js'
+import { displayPrevBookedRooms, findValidIDNumber } from '../src/customerUtils.js'
 import { findAvailability, displayAvailableRooms } from '../src/bookingUtils.js'
 import { filterByRoomType, calculateBookingCost } from '../src/roomsUtils.js'
 import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
@@ -6,14 +6,18 @@ import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings } from 
 //Query Selectors
 
 const companyLogoButton = document.querySelector('.company-logo')
+const navigationBar = document.querySelector(".navbar")
 const welcomeUser = document.querySelector(".user-welcome")
+const welcomeName = document.querySelector(".welcome-name")
 const logOutButton = document.querySelector(".log-out-button")
+const loginForm = document.querySelector(".login-page")
 const makeAReservationButton = document.querySelector(".registration-button")
 const loginContainer = document.querySelector(".login-container")
-const userNameInput = document.querySelector(".username-input")
-const passwordInput = document.querySelector(".passwork-input")
+const userNameInput = document.querySelector("#username")
+const passwordInput = document.querySelector("#password")
 const loginSubmitButton = document.querySelector(".form-submit")
 const dashboardInformationContainer = document.querySelector(".dashboard-information-container")
+const dashboardPrevBookings = document.querySelector(".scheduled-bookings-container")
 const totalCostValue = document.querySelector(".total-cost-value")
 const dateIn = document.querySelector("#date")
 const typeFilter = document.querySelector("#roomType")
@@ -47,9 +51,30 @@ const startFetch = () => {
       let display = displayAvailableRooms(findDate, findRoom)
       showAvailableRooms(display)
       reservationElements()
-})
     })
 
+
+    loginSubmitButton.addEventListener('click', function() {
+      let usernameValue = userNameInput.value;
+      let passwordValue = passwordInput.value;
+      let passwordUniversal = 'overlook2021'
+      let find = findValidIDNumber(customerData1, usernameValue)
+      loginForm.innerHTML = '';
+      if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
+        loginForm.innerHTML = `<img class="login-logo" src="./images/login-clementine-logo.png">
+        <label class="username">Username</label>
+        <input class ="username-input" type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
+        <label class="password">Password</label>
+        <input class="password-input" type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+        <button class ="form-submit" tabindex="0">Login</button>
+        <p class="username-password-error">Please Enter a Valid Username or Password</p>`
+      } else {
+        homeElements()
+        currentUser = find
+        welcomeName.innerText = `Hello ${currentUser.name}`
+      }      
+    })
+  })
 }
 
 roomsDisplay.addEventListener('click', function(event) {
@@ -58,7 +83,22 @@ roomsDisplay.addEventListener('click', function(event) {
   } 
   })
 
-  
+  const showPrevBookedRooms = (array) => {
+    dashboardPrevBookings.innerHTML = ''
+    array.forEach(arr => dashboardPrevBookings.innerHTML += `
+  <div class="scheduled-bookings-container">
+    <h2 class="scheduled-bookings-title">Current Bookings</h2>
+    <div class = "room-info">
+      <p class="room-number">Room Number: ${arr.number}</p>
+      <p class="room-type">Room Type: ${arr.roomType}</p>
+      <p class="room-bidet">Bidet: ${arr.bidet}</p>
+      <p class="room-bed-size">Bed Size: ${arr.bedSize}</p>
+      <p class="room-bed">Number of Beds: ${arr.numBeds}</p>
+      <p class="room-cost">Cost Per Night: ${arr.costPerNight}</p>
+      <button class="booking-button">Book Now</button>
+    </div>
+  </div>`)
+}
 
   const showAvailableRooms = (array) => {
     roomsDisplay.innerHTML = ''
@@ -76,7 +116,6 @@ roomsDisplay.addEventListener('click', function(event) {
 </div>`)
 }
 
-
 const hideElements = (element) => {
  element.setAttribute("hidden", "")
 }
@@ -89,6 +128,29 @@ const reservationElements = () => {
   hideElements(welcomeUser)
   hideElements(navRegistrationSection)
   showElements(navHomeSection)
+  showElements(navigationBar)
+  showElements(makeReservationContainer)
+  hideElements(loginContainer)
+  hideElements(dashboardInformationContainer)
+
+}
+
+const homeElements = () => {
+  showElements(welcomeUser)
+  hideElements(navHomeSection)
+  showElements(navigationBar)
+  hideElements(makeReservationContainer)
+  showElements(dashboardInformationContainer)
+  hideElements(loginContainer)
+}
+
+companyLogoButton.addEventListener('click', homeElements)
+
+const loginElements = () => {
+  hideElements(navigationBar)
+  showElements(loginContainer)
+  hideElements(makeReservationContainer)
+  hideElements(dashboardInformationContainer)
 }
 
 startFetch()

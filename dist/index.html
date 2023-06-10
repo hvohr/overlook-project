@@ -12,8 +12,8 @@
 <header class = 'page-header'>
   <img class='company-logo' src='./images/clementine-logo.png'>
   <h1 class = 'website-title' tabindex='0'>The Clementine Hotel</h1>
-  <nav class = 'navbar'>
-    <div class = 'return-home-section' hidden>
+  <nav class = 'navbar' hidden>
+    <div class = 'return-home-section'>
       <img class='home-icon' src='./images/hotel-sign.png'>
       <button class='home-button' tabindex='0'>Return to Dashboard</button>
     </div>
@@ -34,13 +34,13 @@
 </header>
 <body>
   <main class="main-section">
-    <section class="login-container" hidden>
-      <form class="login-page">
+    <section class="login-container">
+      <form class="login-page" required>
           <img class="login-logo" src="./images/login-clementine-logo.png">
           <label class="username">Username</label>
-          <input class ="username-input" type="text" tabindex="0" placeholder="Enter Username" name="uname" required>
+          <input class ="username-input" type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
           <label class="password">Password</label>
-          <input class="password-input" type="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+          <input class="password-input" type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
           <button class ="form-submit" tabindex="0">Login</button>
       </form>
     </section>
@@ -53,7 +53,7 @@
         <p class="total-cost-value">$___</p>
       </div>
   </section>
-  <section class="make-reservation-container">
+  <section class="make-reservation-container" hidden>
     <h2 class="make-res-title">Make a Reservation</h2>
     <section class = "user-bookings-choices">
       <div class="date-filter">
