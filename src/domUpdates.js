@@ -33,6 +33,46 @@ var currentUser;
 
 //Event Listeners
 
+const hideElements = (element) => {
+  element.setAttribute("hidden", "")
+ }
+ 
+ const showElements = (element) => {
+   element.removeAttribute("hidden")
+ }
+ 
+ const reservationElements = () => {
+   hideElements(welcomeUser)
+   hideElements(navRegistrationSection)
+   showElements(navHomeSection)
+   showElements(navigationBar)
+   showElements(makeReservationContainer)
+   hideElements(loginContainer)
+   hideElements(dashboardInformationContainer)
+ }
+ 
+ const homeElements = () => {
+   showElements(welcomeUser)
+   hideElements(navHomeSection)
+   showElements(navigationBar)
+   hideElements(makeReservationContainer)
+   showElements(dashboardInformationContainer)
+   hideElements(loginContainer)
+ }
+ 
+ companyLogoButton.addEventListener('click', homeElements)
+ 
+ const loginElements = () => {
+   hideElements(navigationBar)
+   showElements(loginContainer)
+   showElements(loginForm)
+   hideElements(makeReservationContainer)
+   hideElements(dashboardInformationContainer)
+   userNameInput.value = ''
+   passwordInput.value = ''
+ }
+ 
+
 const startFetch = () => {
   Promise.all([getAllCustomers(), getSingleCustomer(), getAllRooms(), getAllBookings()]).then((data) => {
     let customerData1 = data[0].customers
@@ -50,11 +90,12 @@ const startFetch = () => {
     })
 
     loginSubmitButton.addEventListener('click', function() {
+      event.preventDefault()
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
       let passwordUniversal = 'hi'
       let find = findValidIDNumber(customerData1, usernameValue)
-      loginForm.innerHTML = '';
+      console.log(find)
       if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
         loginForm.innerHTML = `<img class="login-logo" src="./images/login-clementine-logo.png">
         <label class="username">Username</label>
@@ -74,16 +115,17 @@ const startFetch = () => {
   })
 }
 
+console.log(currentUser)
+
 roomsDisplay.addEventListener('click', function(event) {
   if (event.target.classList.contains('booking-button')) {
     return confetti()
   } 
   })
 
-  makeAReservationButton.addEventListener('click', function() {
-    reservationElements()
-  })
-
+  makeAReservationButton.addEventListener('click', reservationElements)
+  navHomeSection.addEventListener('click', homeElements)
+  logOutButton.addEventListener('click', loginElements)
 
   const showPrevBookedRooms = (array) => {
     dashboardPrevBookings.innerHTML = ''
@@ -112,40 +154,5 @@ roomsDisplay.addEventListener('click', function(event) {
 </div>`)
 }
 
-const hideElements = (element) => {
- element.setAttribute("hidden", "")
-}
-
-const showElements = (element) => {
-  element.removeAttribute("hidden")
-}
-
-const reservationElements = () => {
-  hideElements(welcomeUser)
-  hideElements(navRegistrationSection)
-  showElements(navHomeSection)
-  showElements(navigationBar)
-  showElements(makeReservationContainer)
-  hideElements(loginContainer)
-  hideElements(dashboardInformationContainer)
-}
-
-const homeElements = () => {
-  showElements(welcomeUser)
-  hideElements(navHomeSection)
-  showElements(navigationBar)
-  hideElements(makeReservationContainer)
-  showElements(dashboardInformationContainer)
-  hideElements(loginContainer)
-}
-
-companyLogoButton.addEventListener('click', homeElements)
-
-const loginElements = () => {
-  hideElements(navigationBar)
-  showElements(loginContainer)
-  hideElements(makeReservationContainer)
-  hideElements(dashboardInformationContainer)
-}
 
 startFetch()
