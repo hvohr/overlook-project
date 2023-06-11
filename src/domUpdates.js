@@ -83,10 +83,10 @@ const startFetch = () => {
       let dateValue1 = dateIn.value
       let roomTypeValue = typeFilter.value
       let display = findAvailability(roomsData1, bookingsData1, dateValue1)
-      let findRoom = filterByRoomType(roomsData1, roomTypeValue)
+      let findRoom = filterByRoomType(display, roomTypeValue)
       // let display = displayAvailableRooms(findDate, findRoom)
 
-      showAvailableRooms(display)
+      showAvailableRooms(findRoom)
       reservationElements()
     })
 
@@ -132,13 +132,17 @@ const startFetch = () => {
       }
     })
 
+
+
     const updateDisplayFunctions = () => {
       let dateValue2 = dateIn.value
       let roomTypeValue2 = typeFilter.value
       let display = findAvailability(roomsData1, bookingsData1, dateValue2)
-      let findRoom2 = filterByRoomType(roomsData1, roomTypeValue2)
-
-      showAvailableRooms(display)
+      let findRoom2 = filterByRoomType(display, roomTypeValue2)
+      if (findRoom2.length === 0) {
+        console.log('Empty lmao')
+      }
+      showAvailableRooms(findRoom2)
       reservationElements()
 
     }
