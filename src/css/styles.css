@@ -63,8 +63,7 @@ main {
 }
 
 .total-cost-message, 
-.scheduled-bookings-title,
-.recent-bookings-title {
+.scheduled-bookings-title {
   font-size: 20px;
 }
 
@@ -197,8 +196,7 @@ label,
 
 .rooms-display, 
 .scheduled-bookings-container,
-.total-cost,
-.recent-bookings-container {
+.total-cost {
   width: 100%;
   overflow: hidden;
   flex: display;

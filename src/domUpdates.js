@@ -80,14 +80,19 @@ const startFetch = () => {
     let bookingsData1 = data[3].bookings
 
     reservationSearchButton.addEventListener('click', function() {
-      let dateValue = dateIn.value
+      let dateValue1 = dateIn.value
       let roomTypeValue = typeFilter.value
-      let findDate = findAvailability(bookingsData1, dateValue)
+      let findDate = findAvailability(bookingsData1, dateValue1)
       let findRoom = filterByRoomType(roomsData1, roomTypeValue)
       let display = displayAvailableRooms(findDate, findRoom)
+
       showAvailableRooms(display)
       reservationElements()
     })
+
+    // makeAReservationButton.addEventListener('click', function() {
+    //   roomsDisplay.innerHTML = ''
+    // })
 
     loginSubmitButton.addEventListener('click', function() {
       event.preventDefault()
@@ -122,7 +127,6 @@ const startFetch = () => {
         number: bookedRoomNumber
       }
       addPostBooking(bookingObject, currentUser)
-      console.log(bookingsData1)
       
       }
       })
