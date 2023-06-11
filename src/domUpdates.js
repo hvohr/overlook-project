@@ -26,6 +26,7 @@ const roomsDisplay = document.querySelector(".rooms-display")
 const reservationSearchButton = document.querySelector(".reservation-search")
 const navRegistrationSection = document.querySelector(".registration-section")
 const navHomeSection = document.querySelector(".return-home-section")
+const apologyMessage = document.querySelector(".apology-message")
 
 // GV
 
@@ -55,6 +56,7 @@ const homeElements = () => {
   showElements(welcomeUser)
   hideElements(navHomeSection)
   showElements(navigationBar)
+  showElements(navRegistrationSection)
   hideElements(makeReservationContainer)
   showElements(dashboardInformationContainer)
   hideElements(loginContainer)
@@ -84,12 +86,14 @@ const startFetch = () => {
       let roomTypeValue = typeFilter.value
       let display = findAvailability(roomsData1, bookingsData1, dateValue1)
       let findRoom = filterByRoomType(display, roomTypeValue)
-      // let display = displayAvailableRooms(findDate, findRoom)
-
+      if (findRoom.length !== 0) {
+        hideElements(apologyMessage)
+      } else {
+        showElements(apologyMessage)
+      }
       showAvailableRooms(findRoom)
       reservationElements()
     })
-
 
     loginSubmitButton.addEventListener('click', function () {
       event.preventDefault()
@@ -132,27 +136,28 @@ const startFetch = () => {
       }
     })
 
-
-
     const updateDisplayFunctions = () => {
       let dateValue2 = dateIn.value
       let roomTypeValue2 = typeFilter.value
       let display = findAvailability(roomsData1, bookingsData1, dateValue2)
       let findRoom2 = filterByRoomType(display, roomTypeValue2)
       if (findRoom2.length === 0) {
-        console.log('Empty lmao')
+        showElements(apologyMessage)
       }
       showAvailableRooms(findRoom2)
       reservationElements()
-
     }
+
+    navHomeSection.addEventListener('click', function () {
+      homeElements()
+      let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
+      showPrevBookedRooms(prevBooked)
+    })
   })
 }
-
-
-makeAReservationButton.addEventListener('click', reservationElements)
-navHomeSection.addEventListener('click', homeElements)
 logOutButton.addEventListener('click', loginElements)
+makeAReservationButton.addEventListener('click', reservationElements)
+
 
 const showPrevBookedRooms = (array) => {
   dashboardPrevBookings.innerHTML = ''

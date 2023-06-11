@@ -250,6 +250,14 @@ label,
   font-size: 13px;
 }
 
+.apology {
+  margin: 20px;
+  text-align: center;
+  color:rgb(0, 0, 0);
+  font-style:italic;
+  font-size: 20px;
+}
+
 [hidden] {
   display:none;
 }
