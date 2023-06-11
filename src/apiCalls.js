@@ -27,7 +27,7 @@ const getAllBookings = () => {
 }
 
 const addPostBooking = (postBooking, currentUser) => {
-  fetch('http://localhost:3001/api/v1/bookings', {
+  return fetch('http://localhost:3001/api/v1/bookings', {
     method: 'POST',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(newSavedBooking(postBooking, currentUser))

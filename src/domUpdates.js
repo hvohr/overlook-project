@@ -35,66 +35,63 @@ var currentUser;
 
 const hideElements = (element) => {
   element.setAttribute("hidden", "")
- }
- 
- const showElements = (element) => {
-   element.removeAttribute("hidden")
- }
- 
- const reservationElements = () => {
-   hideElements(welcomeUser)
-   hideElements(navRegistrationSection)
-   showElements(navHomeSection)
-   showElements(navigationBar)
-   showElements(makeReservationContainer)
-   hideElements(loginContainer)
-   hideElements(dashboardInformationContainer)
- }
- 
- const homeElements = () => {
-   showElements(welcomeUser)
-   hideElements(navHomeSection)
-   showElements(navigationBar)
-   hideElements(makeReservationContainer)
-   showElements(dashboardInformationContainer)
-   hideElements(loginContainer)
- }
- 
- companyLogoButton.addEventListener('click', homeElements)
- 
- const loginElements = () => {
-   hideElements(navigationBar)
-   showElements(loginContainer)
-   showElements(loginForm)
-   hideElements(makeReservationContainer)
-   hideElements(dashboardInformationContainer)
-   userNameInput.value = ''
-   passwordInput.value = ''
- }
- 
+}
+
+const showElements = (element) => {
+  element.removeAttribute("hidden")
+}
+
+const reservationElements = () => {
+  hideElements(welcomeUser)
+  hideElements(navRegistrationSection)
+  showElements(navHomeSection)
+  showElements(navigationBar)
+  showElements(makeReservationContainer)
+  hideElements(loginContainer)
+  hideElements(dashboardInformationContainer)
+}
+
+const homeElements = () => {
+  showElements(welcomeUser)
+  hideElements(navHomeSection)
+  showElements(navigationBar)
+  hideElements(makeReservationContainer)
+  showElements(dashboardInformationContainer)
+  hideElements(loginContainer)
+}
+
+companyLogoButton.addEventListener('click', homeElements)
+
+const loginElements = () => {
+  hideElements(navigationBar)
+  showElements(loginContainer)
+  showElements(loginForm)
+  hideElements(makeReservationContainer)
+  hideElements(dashboardInformationContainer)
+  userNameInput.value = ''
+  passwordInput.value = ''
+}
 
 const startFetch = () => {
+  let bookingsData1;
   Promise.all([getAllCustomers(), getSingleCustomer(), getAllRooms(), getAllBookings()]).then((data) => {
     let customerData1 = data[0].customers
     let roomsData1 = data[2].rooms
-    let bookingsData1 = data[3].bookings
+    bookingsData1 = data[3].bookings
 
-    reservationSearchButton.addEventListener('click', function() {
+    reservationSearchButton.addEventListener('click', function () {
       let dateValue1 = dateIn.value
       let roomTypeValue = typeFilter.value
-      let findDate = findAvailability(bookingsData1, dateValue1)
+      let display = findAvailability(roomsData1, bookingsData1, dateValue1)
       let findRoom = filterByRoomType(roomsData1, roomTypeValue)
-      let display = displayAvailableRooms(findDate, findRoom)
+      // let display = displayAvailableRooms(findDate, findRoom)
 
       showAvailableRooms(display)
       reservationElements()
     })
 
-    // makeAReservationButton.addEventListener('click', function() {
-    //   roomsDisplay.innerHTML = ''
-    // })
 
-    loginSubmitButton.addEventListener('click', function() {
+    loginSubmitButton.addEventListener('click', function () {
       event.preventDefault()
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
@@ -114,41 +111,48 @@ const startFetch = () => {
         let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
         showPrevBookedRooms(prevBooked)
         welcomeName.innerText = `Hello ${currentUser.name}`
-      }      
+      }
     })
 
-    roomsDisplay.addEventListener('click', function(event) {
+    roomsDisplay.addEventListener('click', function (event) {
       if (event.target.classList.contains('booking-button')) {
-      confetti()
-      let bookedRoomNumber = parseInt(event.target.parentElement.firstElementChild.id)
-      let bookedRoomDate = dateIn.value.split('-').join('/')
-      let bookingObject = {
-        date: bookedRoomDate,
-        number: bookedRoomNumber
+        let bookedRoomNumber = parseInt(event.target.parentElement.firstElementChild.id)
+        let bookedRoomDate = dateIn.value.split('-').join('/')
+        let bookingObject = {
+          date: bookedRoomDate,
+          number: bookedRoomNumber
+        }
+        addPostBooking(bookingObject, currentUser).then(() => {
+          getAllBookings().then((data) => {
+            bookingsData1 = data.bookings
+            updateDisplayFunctions()
+          })
+        })
+        confetti()
       }
-      addPostBooking(bookingObject, currentUser)
-      
-      }
-      })
+    })
+
+    const updateDisplayFunctions = () => {
+      let dateValue2 = dateIn.value
+      let roomTypeValue2 = typeFilter.value
+      let display = findAvailability(roomsData1, bookingsData1, dateValue2)
+      let findRoom2 = filterByRoomType(roomsData1, roomTypeValue2)
+
+      showAvailableRooms(display)
+      reservationElements()
+
+    }
   })
 }
 
-// const postToDisplay = () => {
-//   let newList = []
-//    currentUser.recipesToCook.forEach((recipeID) => {
-//       let findID = recipesData1.find((recipe) => recipe.id === recipeID)
-//       newList.push(findID)
-//   })
-//   return newList
-// }
 
-  makeAReservationButton.addEventListener('click', reservationElements)
-  navHomeSection.addEventListener('click', homeElements)
-  logOutButton.addEventListener('click', loginElements)
+makeAReservationButton.addEventListener('click', reservationElements)
+navHomeSection.addEventListener('click', homeElements)
+logOutButton.addEventListener('click', loginElements)
 
-  const showPrevBookedRooms = (array) => {
-    dashboardPrevBookings.innerHTML = ''
-    array.forEach(arr => dashboardPrevBookings.innerHTML += `
+const showPrevBookedRooms = (array) => {
+  dashboardPrevBookings.innerHTML = ''
+  array.forEach(arr => dashboardPrevBookings.innerHTML += `
     <div class = "prev-booking-info">
       <img class="reserved-logo" src='./images/reserved.png'>
       <p class="room-number">Room Number: ${arr.roomNumber}</p>
@@ -157,9 +161,9 @@ const startFetch = () => {
   </div>`)
 }
 
-  const showAvailableRooms = (array) => {
-    roomsDisplay.innerHTML = ''
-    array.forEach(arr => roomsDisplay.innerHTML += `
+const showAvailableRooms = (array) => {
+  roomsDisplay.innerHTML = ''
+  array.forEach(arr => roomsDisplay.innerHTML += `
 <div class="date-room-display" tabindex="0" id="${arr.number}">
 <div class = "room-info">
   <p class="room-number" id="${arr.number}">Room Number: ${arr.number}</p>
