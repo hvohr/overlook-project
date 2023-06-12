@@ -95,7 +95,7 @@ const startFetch = () => {
       event.preventDefault()
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
-      let passwordUniversal = 'hi'
+      let passwordUniversal = 'overlook2021'
       let find = findValidIDNumber(customerData1, usernameValue)
       if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
         loginForm.innerHTML = `<img class="login-logo" src="./images/login-clementine-logo.png">
