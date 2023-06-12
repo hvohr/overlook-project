@@ -28,8 +28,6 @@ const navRegistrationSection = document.querySelector(".registration-section")
 const navHomeSection = document.querySelector(".return-home-section")
 const apologyMessage = document.querySelector(".apology-message")
 
-// GV
-
 var currentUser;
 
 //Event Listeners
@@ -62,8 +60,6 @@ const homeElements = () => {
   hideElements(loginContainer)
 }
 
-companyLogoButton.addEventListener('click', homeElements)
-
 const loginElements = () => {
   hideElements(navigationBar)
   showElements(loginContainer)
@@ -95,7 +91,7 @@ const startFetch = () => {
       reservationElements()
     })
 
-    loginSubmitButton.addEventListener('click', function () {
+    loginSubmitButton.addEventListener('click', function(event) {
       event.preventDefault()
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
@@ -120,8 +116,6 @@ const startFetch = () => {
         welcomeName.innerText = `Hello ${currentUser.name}`
       }
     })
-
-
 
     roomsDisplay.addEventListener('click', function (event) {
       if (event.target.classList.contains('booking-button')) {
@@ -162,9 +156,10 @@ const startFetch = () => {
     })
   })
 }
+
 logOutButton.addEventListener('click', loginElements)
 makeAReservationButton.addEventListener('click', reservationElements)
-
+companyLogoButton.addEventListener('click', homeElements)
 
 const showPrevBookedRooms = (array) => {
   dashboardPrevBookings.innerHTML = ''
