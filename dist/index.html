@@ -38,9 +38,9 @@
       <form class="login-page" required>
           <img class="login-logo" src="./images/login-clementine-logo.png">
           <label class="username">Username</label>
-          <input class ="username-input" type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
+          <input class ="username-input" tabindex='0' type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
           <label class="password">Password</label>
-          <input class="password-input" type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+          <input class="password-input" tabindex='0' type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
           <button class ="form-submit" tabindex="0">Login</button>
       </form>
     </section>
@@ -62,18 +62,18 @@
     <section class = "user-bookings-choices">
       <div class="date-filter">
         <label for="booking">Please Choose a Date</label>
-        <input class="booking-date" type="date" value="2023-06-01" id="date">
+        <input class="booking-date" tabindex='0' type="date" value="2023-06-01" id="date">
       </div>
       <div class="reservation-search">
         <button class = 'reservation-search'>Search Listings</button>
       </div>
       <div class="type-filter">
         <label for="rooms">Filter by Type</label>
-        <select id="roomType" name="rooms">
-        <option value="single-room">Single Room</option>
-        <option value="junior-suite">Junior Suite</option>
-        <option value="residential-suite">Residential Suite</option>
-        <option value="suite">Suite</option>
+        <select id="roomType" name="rooms" tabindex='0'>
+        <option value="single-room" tabindex='0'>Single Room</option>
+        <option value="junior-suite" tabindex='0'>Junior Suite</option>
+        <option value="residential-suite" tabindex='0'>Residential Suite</option>
+        <option value="suite" tabindex='0'>Suite</option>
         </select>
       </div>
     </section>

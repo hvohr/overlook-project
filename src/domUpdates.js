@@ -100,9 +100,9 @@ const startFetch = () => {
       if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
         loginForm.innerHTML = `<img class="login-logo" src="./images/login-clementine-logo.png">
         <label class="username">Username</label>
-        <input class ="username-input" type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
+        <input class ="username-input" tabindex='0' type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
         <label class="password">Password</label>
-        <input class="password-input" type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+        <input class="password-input" tabindex='0' type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
         <button class ="form-submit" tabindex="0">Login</button>
         <p class="username-password-error">Please Enter a Valid Username or Password</p>`
       } else {
@@ -187,7 +187,7 @@ const showAvailableRooms = (array) => {
   <p class="room-bed-size">Bed Size: ${arr.bedSize}</p>
   <p class="room-bed">Number of Beds: ${arr.numBeds}</p>
   <p class="room-cost">Cost Per Night: ${arr.costPerNight}</p>
-  <button class="booking-button">Book Now</button>
+  <button class="booking-button" tabindex='0'>Book Now</button>
 </div>
 </div>`)
 }
