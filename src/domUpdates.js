@@ -1,7 +1,7 @@
 import { displayPrevBookedRooms, findValidIDNumber, calculateBookingCost} from '../src/customerUtils.js'
 import { findAvailability } from '../src/bookingUtils.js'
 import { filterByRoomType } from '../src/roomsUtils.js'
-import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings, addPostBooking } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
+import { getAllCustomers, getAllRooms, getAllBookings, addPostBooking } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
 
 //Query Selectors
 
@@ -72,10 +72,10 @@ const loginElements = () => {
 
 const startFetch = () => {
   let bookingsData1;
-  Promise.all([getAllCustomers(), getSingleCustomer(), getAllRooms(), getAllBookings()]).then((data) => {
+  Promise.all([getAllCustomers(), getAllRooms(), getAllBookings()]).then((data) => {
     let customerData1 = data[0].customers
-    let roomsData1 = data[2].rooms
-    bookingsData1 = data[3].bookings
+    let roomsData1 = data[1].rooms
+    bookingsData1 = data[2].bookings
 
     reservationSearchButton.addEventListener('click', function () {
       let dateValue1 = dateIn.value
@@ -165,7 +165,7 @@ const showPrevBookedRooms = (array) => {
   dashboardPrevBookings.innerHTML = ''
   array.forEach(arr => dashboardPrevBookings.innerHTML += `
     <div class = "prev-booking-info">
-      <img class="reserved-logo" src='./images/reserved.png'>
+      <img class="reserved-logo" src='./images/reserved.png' alt="small red sign with the words reserved labeled on it">
       <p class="room-number">Room Number: ${arr.roomNumber}</p>
       <p class="room-date">Booking Date: ${arr.date}</p>
     </div>
