@@ -1,7 +1,7 @@
 import chai from 'chai';
 const expect = chai.expect;
 import { bookingsData } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/data/bookings-sample.js';
-import { displayPrevBookedRooms, findValidIDNumber } from '../src/customerUtils.js' 
+import { displayPrevBookedRooms, findValidIDNumber, calculateBookingCost } from '../src/customerUtils.js' 
 import { customerData } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/data/customers-sample-data.js';
 
 describe('displayPrevBookedRooms', function() {
@@ -35,5 +35,22 @@ describe('findValidIDNumber', function() {
     let customerUsername = findValidIDNumber(customerData, 'ghostman26')
     let expected = undefined
     expect(customerUsername).to.equal(expected)
+  })
+})
+describe('calculateBookingCost', function() {
+  it('should be a function', function() {
+    expect(calculateBookingCost).to.be.a('function')
+  });
+  it('should return the booking cost for one scheduled room', () => {
+    let room1Cost = 358.4
+    let totalCost = calculateBookingCost(roomsData,[room1Cost])
+    let expected = 358.4
+    expect(totalCost).to.deep.equal(expected)
+  })
+  it('should return the booking cost for multiple scheduled rooms', () => {
+    let room1Cost = 358.4
+    let room2Cost = 429.44
+    let totalCost = calculateBookingCost(roomsData,[room1Cost, room2Cost])
+    expect(totalCost).to.equal(room1Cost + room2Cost)
   })
 })
