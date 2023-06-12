@@ -8,8 +8,6 @@ const findValidIDNumber = (customerData, username) => {
   customerData.forEach((customer) => {
     if (username.includes('customer' + customer.id)) {
       customerLogin = customer
-    } else {
-      return 'Not a valid username'
     }
   })
   return customerLogin

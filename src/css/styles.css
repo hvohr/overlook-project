@@ -204,6 +204,7 @@ label,
 }
 
 .room-number,
+.room-date,
 .room-type,
 .room-bidet,
 .room-bed,
@@ -247,6 +248,14 @@ label,
   color:red;
   font-style:italic;
   font-size: 13px;
+}
+
+.apology {
+  margin: 20px;
+  text-align: center;
+  color:rgb(0, 0, 0);
+  font-style:italic;
+  font-size: 20px;
 }
 
 [hidden] {

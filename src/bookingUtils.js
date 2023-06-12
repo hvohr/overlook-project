@@ -1,20 +1,15 @@
-const findAvailability = (bookingsData, dateValue) => {
-  let fixSlashes = dateValue.split('-').join('/')
-  return bookingsData.filter((book) => book.date !== fixSlashes)
-}
-
-const displayAvailableRooms = (findAvailabilityData, roomsData) => {
-  let find = findAvailabilityData.map((book) => book.roomNumber)
-  let filter = roomsData.filter(book2 => {
-    if (find.includes(book2.number)) {
-      return book2
-    }
+const findAvailability = (roomsData, bookingsData, dateValue) => {
+  const date = dateValue.split('-').join('/')
+  const bookingsOnDate = bookingsData.filter((b) => {
+      return b.date === date 
   })
-  return filter
+  let find = roomsData.filter((room) => {
+    return !bookingsOnDate.some((booking) =>  booking.roomNumber === room.number)
+  })
+  return find
 }
 
 export {
-  findAvailability,
-  displayAvailableRooms
+  findAvailability
 }
 

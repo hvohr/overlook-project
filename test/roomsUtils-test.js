@@ -8,7 +8,7 @@ describe('filterByRoomType', function() {
     expect(filterByRoomType).to.be.a('function')
   });
   it('should filter by room type', () => {
-    let filter = filterByRoomType(roomsData, 'single room')
+    let filter = filterByRoomType(roomsData, 'single-room')
     let expected = [
       {
         number: 3,
@@ -44,11 +44,11 @@ describe('filterByRoomType', function() {
       }
     ]
     expect(filter).to.deep.equal(expected)
-    expect(filter.length).to.equal(4)
+    expect(filter.length).to.deep.equal(4)
   })
   it('should return nothing if no filter matches', () => {
-    let filter = filterByRoomType(roomsData, 'king suite');
-    expect(filter.length).to.equal(0)
+    let filter = filterByRoomType(roomsData, 'king-suite');
+    expect(filter.length).to.deep.equal(0)
   })
 });
 describe('calculateBookingCost', function() {
