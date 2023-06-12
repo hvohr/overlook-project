@@ -17,7 +17,8 @@ header,
 .user-welcome,
 .date-room-display,
 .return-home-section,
-.booking-title {
+.booking-title,
+.user-cost-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +64,8 @@ main {
 }
 
 .total-cost-message, 
-.scheduled-bookings-title {
+.scheduled-bookings-title,
+.total-cost-value {
   font-size: 20px;
 }
 
@@ -195,8 +197,7 @@ label,
 }
 
 .rooms-display, 
-.scheduled-bookings-container,
-.total-cost {
+.scheduled-bookings-container {
   width: 100%;
   overflow: hidden;
   flex: display;
@@ -214,8 +215,8 @@ label,
 }
 
 .total-cost {
-  margin-top: 26px;
-  width: 97%
+  margin-top: 10px;
+  width: 80%
 }
 
 #date,
