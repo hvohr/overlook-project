@@ -1,7 +1,7 @@
 import { displayPrevBookedRooms, findValidIDNumber, calculateBookingCost} from '../src/customerUtils.js'
 import { findAvailability } from '../src/bookingUtils.js'
 import { filterByRoomType } from '../src/roomsUtils.js'
-import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings, addPostBooking } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
+import { getAllCustomers, getAllRooms, getAllBookings, addPostBooking } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
 
 //Query Selectors
 
@@ -72,10 +72,10 @@ const loginElements = () => {
 
 const startFetch = () => {
   let bookingsData1;
-  Promise.all([getAllCustomers(), getSingleCustomer(), getAllRooms(), getAllBookings()]).then((data) => {
+  Promise.all([getAllCustomers(), getAllRooms(), getAllBookings()]).then((data) => {
     let customerData1 = data[0].customers
-    let roomsData1 = data[2].rooms
-    bookingsData1 = data[3].bookings
+    let roomsData1 = data[1].rooms
+    bookingsData1 = data[2].bookings
 
     reservationSearchButton.addEventListener('click', function () {
       let dateValue1 = dateIn.value
@@ -100,9 +100,9 @@ const startFetch = () => {
       if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
         loginForm.innerHTML = `<img class="login-logo" src="./images/login-clementine-logo.png">
         <label class="username">Username</label>
-        <input class ="username-input" type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
+        <input class ="username-input" tabindex='0' type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
         <label class="password">Password</label>
-        <input class="password-input" type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
+        <input class="password-input" tabindex='0' type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
         <button class ="form-submit" tabindex="0">Login</button>
         <p class="username-password-error">Please Enter a Valid Username or Password</p>`
       } else {
@@ -165,7 +165,7 @@ const showPrevBookedRooms = (array) => {
   dashboardPrevBookings.innerHTML = ''
   array.forEach(arr => dashboardPrevBookings.innerHTML += `
     <div class = "prev-booking-info">
-      <img class="reserved-logo" src='./images/reserved.png'>
+      <img class="reserved-logo" src='./images/reserved.png' alt="small red sign with the words reserved labeled on it">
       <p class="room-number">Room Number: ${arr.roomNumber}</p>
       <p class="room-date">Booking Date: ${arr.date}</p>
     </div>
@@ -187,7 +187,7 @@ const showAvailableRooms = (array) => {
   <p class="room-bed-size">Bed Size: ${arr.bedSize}</p>
   <p class="room-bed">Number of Beds: ${arr.numBeds}</p>
   <p class="room-cost">Cost Per Night: ${arr.costPerNight}</p>
-  <button class="booking-button">Book Now</button>
+  <button class="booking-button" tabindex='0'>Book Now</button>
 </div>
 </div>`)
 }

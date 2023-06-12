@@ -12,13 +12,6 @@ const getAllRooms = () => {
   .catch((error) => alert(error))
 }
 
-const getSingleCustomer = () => {
-  return fetch('http://localhost:3001/api/v1/customers/<id>')
-    .then((response => response.json()))
-    .then((data) => { return data })
-    .catch((error) => alert(error))
-}
-
 const getAllBookings = () => {
   return fetch('http://localhost:3001/api/v1/bookings')
     .then((response => response.json()))
@@ -47,7 +40,6 @@ const newSavedBooking = (postBooking, currentUser) => {
 
 export {
   getAllCustomers,
-  getSingleCustomer,
   getAllRooms,
   getAllBookings,
   addPostBooking

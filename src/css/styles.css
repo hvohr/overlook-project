@@ -46,10 +46,6 @@ nav {
   margin: 50px;
 }
 
-.company-logo {
-  cursor: pointer;
-}
-
 main {
   height: 55vh;
   display: flex;
