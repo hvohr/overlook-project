@@ -1,5 +1,5 @@
 import { displayPrevBookedRooms, findValidIDNumber } from '../src/customerUtils.js'
-import { findAvailability, displayAvailableRooms } from '../src/bookingUtils.js'
+import { findAvailability } from '../src/bookingUtils.js'
 import { filterByRoomType, calculateBookingCost } from '../src/roomsUtils.js'
 import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings, addPostBooking } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
 
