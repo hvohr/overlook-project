@@ -113,10 +113,15 @@ const startFetch = () => {
         currentUser = find
         homeElements()
         let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
+        let totalCost = calculateBookingCost(prevBooked, roomsData1)
+        showUserTotalCost(totalCost)
         showPrevBookedRooms(prevBooked)
+
         welcomeName.innerText = `Hello ${currentUser.name}`
       }
     })
+
+
 
     roomsDisplay.addEventListener('click', function (event) {
       if (event.target.classList.contains('booking-button')) {
@@ -151,6 +156,8 @@ const startFetch = () => {
     navHomeSection.addEventListener('click', function () {
       homeElements()
       let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
+      let totalCost = calculateBookingCost(prevBooked, roomsData1)
+      showUserTotalCost(totalCost)
       showPrevBookedRooms(prevBooked)
     })
   })
@@ -168,6 +175,10 @@ const showPrevBookedRooms = (array) => {
       <p class="room-date">Booking Date: ${arr.date}</p>
     </div>
   </div>`)
+}
+
+const showUserTotalCost = (cost) => {
+  totalCostValue.innerText = `$ ${cost}`
 }
 
 const showAvailableRooms = (array) => {
