@@ -1,7 +1,6 @@
 body, html {
   background-color:#faf1ed;
   min-height: 100vh;
-  margin: 5;
 }
 
 body, 
@@ -17,7 +16,8 @@ header,
 .user-welcome,
 .date-room-display,
 .return-home-section,
-.booking-title {
+.booking-title,
+.user-cost-container {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -29,7 +29,7 @@ nav {
   width: 100%;
   justify-content: space-between;
   align-items: flex-end;
-  margin-top: 0px;
+  margin: 0px;
   border-color:#242c2c;
   border-style: solid none;
   border-width: 3px;
@@ -57,18 +57,19 @@ main {
   justify-content:center;
 }
 
-.welcome-name, .welcome {
-  font-size: 16px;
+.welcome-name, 
+.welcome, 
+.user-welcome {
   margin: 5px;
 }
 
 .total-cost-message, 
-.scheduled-bookings-title {
+.scheduled-bookings-title,
+.total-cost-value {
   font-size: 20px;
 }
 
 .user-welcome {
-  margin: 5px;
   width: 300px;
   align-content: center;
 }
@@ -156,19 +157,7 @@ label,
   flex-direction: column;
 }
 
-.room-info {
-  display: flex;
-  border-style: double;
-  border-color:#fc971b;
-  background-color:#ffffff;;
-  flex-direction: column;
-  font-size: 15px;
-  margin-top: 20px;
-  margin-bottom: 20px;
-  padding: 10px;
-  font-family:'Source Sans Pro', sans-serif;
-}
-
+.room-info,
 .prev-booking-info, 
 .total-cost {
   display: flex;
@@ -176,11 +165,18 @@ label,
   border-color:#fc971b;
   background-color:#ffffff;;
   flex-direction: column;
-  font-size: 15px;
-  margin-top: 10px;
-  margin-bottom: 10px;
-  padding: 5px;
   font-family:'Source Sans Pro', sans-serif;
+}
+
+.room-info {
+  margin: 20px 0px 20px 0px;
+  padding: 10px;
+}
+
+.prev-booking-info, 
+.total-cost {
+  margin: 10px 0px 10px 0px;
+  padding: 5px;
 }
 
 .booking-title, 
@@ -195,8 +191,7 @@ label,
 }
 
 .rooms-display, 
-.scheduled-bookings-container,
-.total-cost {
+.scheduled-bookings-container {
   width: 100%;
   overflow: hidden;
   flex: display;
@@ -209,13 +204,19 @@ label,
 .room-bidet,
 .room-bed,
 .room-cost,
-.room-bed-size {
+.room-bed-size,
+.room-info,
+.prev-booking-info, 
+.total-cost,
+#date,
+#roomType,
+.welcome-name, .welcome {
   font-size: 15px;
 }
 
 .total-cost {
-  margin-top: 26px;
-  width: 97%
+  margin: 10px 0px 0px 0px;
+  width: 80%
 }
 
 #date,
@@ -225,8 +226,6 @@ label,
   border-style: double;
   border-width: 2px;
   margin: 5px;
-  font-size: 15px;
-  font-family:'Source Sans Pro', sans-serif;
 }
 
 .reservationSearchContainer {
@@ -240,7 +239,6 @@ label,
   justify-content: space-between;
   width: 100%;
   margin: 10px;
-  font-family:'Source Sans Pro', sans-serif;
 }
 
 .username-password-error {

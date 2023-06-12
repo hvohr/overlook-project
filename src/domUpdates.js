@@ -1,6 +1,6 @@
-import { displayPrevBookedRooms, findValidIDNumber } from '../src/customerUtils.js'
+import { displayPrevBookedRooms, findValidIDNumber, calculateBookingCost} from '../src/customerUtils.js'
 import { findAvailability } from '../src/bookingUtils.js'
-import { filterByRoomType, calculateBookingCost } from '../src/roomsUtils.js'
+import { filterByRoomType } from '../src/roomsUtils.js'
 import { getAllCustomers, getSingleCustomer, getAllRooms, getAllBookings, addPostBooking } from '/Users/hollisvohr/turing_work/mod_2/outlook-project/src/apiCalls.js'
 
 //Query Selectors
@@ -27,8 +27,6 @@ const reservationSearchButton = document.querySelector(".reservation-search")
 const navRegistrationSection = document.querySelector(".registration-section")
 const navHomeSection = document.querySelector(".return-home-section")
 const apologyMessage = document.querySelector(".apology-message")
-
-// GV
 
 var currentUser;
 
@@ -62,8 +60,6 @@ const homeElements = () => {
   hideElements(loginContainer)
 }
 
-companyLogoButton.addEventListener('click', homeElements)
-
 const loginElements = () => {
   hideElements(navigationBar)
   showElements(loginContainer)
@@ -95,7 +91,7 @@ const startFetch = () => {
       reservationElements()
     })
 
-    loginSubmitButton.addEventListener('click', function () {
+    loginSubmitButton.addEventListener('click', function(event) {
       event.preventDefault()
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
@@ -113,7 +109,10 @@ const startFetch = () => {
         currentUser = find
         homeElements()
         let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
+        let totalCost = calculateBookingCost(prevBooked, roomsData1)
+        showUserTotalCost(totalCost)
         showPrevBookedRooms(prevBooked)
+
         welcomeName.innerText = `Hello ${currentUser.name}`
       }
     })
@@ -151,13 +150,16 @@ const startFetch = () => {
     navHomeSection.addEventListener('click', function () {
       homeElements()
       let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
+      let totalCost = calculateBookingCost(prevBooked, roomsData1)
+      showUserTotalCost(totalCost)
       showPrevBookedRooms(prevBooked)
     })
   })
 }
+
 logOutButton.addEventListener('click', loginElements)
 makeAReservationButton.addEventListener('click', reservationElements)
-
+companyLogoButton.addEventListener('click', homeElements)
 
 const showPrevBookedRooms = (array) => {
   dashboardPrevBookings.innerHTML = ''
@@ -168,6 +170,10 @@ const showPrevBookedRooms = (array) => {
       <p class="room-date">Booking Date: ${arr.date}</p>
     </div>
   </div>`)
+}
+
+const showUserTotalCost = (cost) => {
+  totalCostValue.innerText = `$ ${cost}`
 }
 
 const showAvailableRooms = (array) => {
