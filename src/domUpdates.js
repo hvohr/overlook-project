@@ -105,6 +105,12 @@ const startFetch = () => {
         let totalCost = calculateBookingCost(prevBooked, roomsData1)
         showUserTotalCost(totalCost)
         showPrevBookedRooms(prevBooked)
+        welcomeUser.innerHTML = '';
+        welcomeUser.innerHTML += `<div class = "user-welcome">
+        <img class="welcome-logo" src="./images/hotel-bell.png" alt="yellow bell with a brown base and three blue lines indicating sound">
+        <h2 class="welcome-name">Hello ${currentUser.name}!</h2>
+        <p class="welcome">Welcome to your Dashboard!</p>
+      </div>`
       } else {
         showElements(errorMessage)
       }
