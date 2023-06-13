@@ -1,7 +1,7 @@
 # Overlook Project - The Clementine Hotel
 
 ### Abstract:
-Welcome to the Clementine Hotel! Want to book a room with our establishment? Well, my application is the one for you! Welcome to *The Clementine Hotel*, your go-to hotel booking website for the finest accommodations possible! We are very secure, so you have to log in with your designated username and password in order to view your previous bookings. You can make a new booking by selecting a date and a room type. By clicking on `book` your new booking will finalize and you can view it on your dashboard! Your total cost can also be viewed on the dashboard. When you are done, you can logout and feel safe knowing your information will be there when you log back in! Thank you for staying at the Clementine Hotel!
+Welcome to the Clementine Hotel! Want to book a room with our establishment? Well, my application is the one for you! *The Clementine Hotel* is your go-to hotel booking website with the finest accommodations possible. We are very secure, so you have to log in with your designated username and password in order to view your previous bookings. You can make a new booking by selecting a date and a room type. By clicking on `book` your new booking will finalize and you can view it on your dashboard! Your total cost can also be viewed on the dashboard. When you are done, you can logout and feel safe knowing your information will be there when you log back in! Thank you for staying at the Clementine Hotel!
 
 ### Installation Instructions:
 In order to run this application:
