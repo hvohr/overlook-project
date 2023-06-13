@@ -7,7 +7,7 @@ import { getAllCustomers, getAllRooms, getAllBookings, addPostBooking } from '/U
 
 const navigationBar = document.querySelector(".navbar")
 const welcomeUser = document.querySelector(".user-welcome")
-const welcomeName = document.querySelector(".welcome-name")
+const errorMessage = document.querySelector(".error-message")
 const logOutButton = document.querySelector(".log-out-button")
 const loginForm = document.querySelector(".login-page")
 const makeAReservationButton = document.querySelector(".registration-button")
@@ -91,28 +91,22 @@ const startFetch = () => {
     })
 
     loginSubmitButton.addEventListener('click', function(event) {
+      hideElements(errorMessage)
       event.preventDefault()
       let usernameValue = userNameInput.value;
       let passwordValue = passwordInput.value;
       let passwordUniversal = 'overlook2021'
       let find = findValidIDNumber(customerData1, usernameValue)
-      if (((find === undefined && passwordValue === passwordUniversal) || (find !== undefined && passwordValue !== passwordUniversal) || (passwordValue === ''))) {
-        loginForm.innerHTML = `<img class="login-logo" src="./images/login-clementine-logo.png">
-        <label class="username">Username</label>
-        <input class ="username-input" tabindex='0' type="text" id="username" tabindex="0" placeholder="Enter Username" name="uname" required>
-        <label class="password">Password</label>
-        <input class="password-input" tabindex='0' type="password" id="password" tabindex="0" placeholder="Enter Password" name="psw" required>
-        <button class ="form-submit" tabindex="0">Login</button>
-        <p class="username-password-error">Please Enter a Valid Username or Password</p>`
-      } else {
+      if (find !== undefined && passwordValue === passwordUniversal) {
+        event.preventDefault()
         currentUser = find
         homeElements()
         let prevBooked = displayPrevBookedRooms(currentUser, bookingsData1)
         let totalCost = calculateBookingCost(prevBooked, roomsData1)
         showUserTotalCost(totalCost)
         showPrevBookedRooms(prevBooked)
-
-        welcomeName.innerText = `Hello ${currentUser.name}`
+      } else {
+        showElements(errorMessage)
       }
     })
 
