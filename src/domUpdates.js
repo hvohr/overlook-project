@@ -5,7 +5,6 @@ import { getAllCustomers, getAllRooms, getAllBookings, addPostBooking } from '/U
 
 //Query Selectors
 
-const companyLogoButton = document.querySelector('.company-logo')
 const navigationBar = document.querySelector(".navbar")
 const welcomeUser = document.querySelector(".user-welcome")
 const welcomeName = document.querySelector(".welcome-name")
@@ -159,15 +158,16 @@ const startFetch = () => {
 
 logOutButton.addEventListener('click', loginElements)
 makeAReservationButton.addEventListener('click', reservationElements)
-companyLogoButton.addEventListener('click', homeElements)
 
 const showPrevBookedRooms = (array) => {
   dashboardPrevBookings.innerHTML = ''
   array.forEach(arr => dashboardPrevBookings.innerHTML += `
     <div class = "prev-booking-info">
       <img class="reserved-logo" src='./images/reserved.png' alt="small red sign with the words reserved labeled on it">
-      <p class="room-number">Room Number: ${arr.roomNumber}</p>
-      <p class="room-date">Booking Date: ${arr.date}</p>
+      <div class="reserved-container">
+        <p class="room-number">Room Number: ${arr.roomNumber}</p>
+        <p class="room-date">Booking Date: ${arr.date}</p>
+      </div>
     </div>
   </div>`)
 }
