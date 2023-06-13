@@ -114,11 +114,16 @@ h1 {
 .registration-icon, 
 .login-logo, 
 .welcome-logo,
-.home-icon,
-.reserved-logo {
+.home-icon {
   height: 40px;
   width: 40px;
   padding-bottom: 5px;
+}
+
+.reserved-logo {
+  height: 60px;
+  width: 60px;
+  padding: 0px 0px 5px 20px;
 }
 
 .make-reservation-container {
@@ -154,13 +159,24 @@ label,
 }
 
 .room-info,
-.prev-booking-info, 
 .total-cost {
   display: flex;
   border-style: double;
   border-color:#fc971b;
   background-color:#ffffff;;
   flex-direction: column;
+  font-family:'Source Sans Pro', sans-serif;
+}
+
+.prev-booking-info {
+  display: flex;
+  border-style: double;
+  border-color:#fc971b;
+  background-color:#ffffff;;
+  flex-direction: horizontal;
+  align-items: center;
+  justify-content: center;
+  justify-content: space-between;
   font-family:'Source Sans Pro', sans-serif;
 }
 
@@ -172,7 +188,12 @@ label,
 .prev-booking-info, 
 .total-cost {
   margin: 10px 0px 10px 0px;
-  padding: 5px;
+}
+
+.reserved-container {
+  padding-right: 20px;
+  margin: 10px 0px 10px 0px;
+
 }
 
 .booking-title, 
